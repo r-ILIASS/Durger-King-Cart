@@ -94,4 +94,5 @@ body {
 
 .item__content--controls > i {
   font-size: 0.6em;
+  cursor: pointer;
 }
