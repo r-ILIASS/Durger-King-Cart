@@ -41,18 +41,17 @@ body {
 
 .shop {
   min-height: 100vh;
-  padding: 5rem 0;
+  padding: 10% 10px;
 }
 
-.shop__container {
+.shop__grid {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, minmax(100px, 150px));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   justify-content: center;
   align-items: center;
   column-gap: 0.9rem;
   row-gap: 1.2rem;
-  border: 1px solid red;
   max-width: 700px;
 }
 
@@ -61,6 +60,11 @@ body {
   -webkit-box-shadow: 2px 4px 9px -4px #00000031;
   box-shadow: 2px 4px 9px -4px #00000031;
   border-radius: 10px;
+  transition-duration: 200ms;
+}
+
+.item:hover {
+  transform: scale(1.05);
 }
 
 .item > img {
