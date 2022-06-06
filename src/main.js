@@ -1,16 +1,15 @@
 let shop = document.getElementById("shop");
-
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
 let generateShopItems = () => {
   return (shop.innerHTML = shopItems
     .map((item) => {
       let search = basket.find((basketItem) => basketItem.id === item.id);
-      let count = "0";
+      let count = 0;
       if (search !== undefined) count = search.item;
 
       return `
-      <div class="item" id="${item.id}">
+      <div class="item shadow" id="${item.id}">
         <img src="${item.img}" alt="${item.name} image" />
         <div class="item__content">
           <h3>${item.name} <span>${item.price}$</span></h3>

@@ -25,18 +25,22 @@ const generateCartItems = () => {
         let search = shopItems.find(
           (shopItem) => shopItem.id === basketItem.id
         );
+        let total = 121;
 
-        return `<div class="cartItem">
+        return `<div class="cartItem green-shadow">
                   <img src="${search.img}" alt="chicken-bucket" />
                     <div class="cartItem__content">
-                      <h1>${search.name} ${search.price} $</h1>
-                      <div class="cartItem__content--total">Total: <span>xxx $</span></div>
-                      <div class="cartItem__content--controls">
-                        <i class="fa-solid fa-minus"></i>
-                        <span class="quantity">${basketItem.item}</span>
-                        <i class="fa-solid fa-plus"></i>
-                        </div>
+                    <h1>${search.name} ${search.price} $</h1>
+                    <div class="cartItem__content--total">Total: <span>${total} $</span></div>
+                    <div class="cartItem__content--controls">
+                      <i class="fa-solid fa-minus"></i>
+                      <span class="quantity">${basketItem.item}</span>
+                      <i class="fa-solid fa-plus"></i>
                       </div>
+                    </div>
+                    <button class="delete" onclick="deleteItem(${search.id})">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
                 </div>`;
       })
       .join("");
@@ -44,3 +48,8 @@ const generateCartItems = () => {
 };
 
 generateCartItems();
+
+const deleteItem = (id) => {
+  // todo
+  console.log("id: ", id, "Deleted");
+};
