@@ -3,13 +3,13 @@ let shop = document.getElementById("shop");
 const shopItems = [
   {
     id: 1,
-    name: "Burger",
+    name: "XL Burger",
     price: 1.3,
     img: "./images/hamburger.png",
   },
   {
     id: 2,
-    name: "Hotdog",
+    name: "Hotdog + Drink",
     price: 0.5,
     img: "./images/hotdog.png",
   },
@@ -85,9 +85,10 @@ const decrement = (id) => {
   if (search.item === 0) return;
   search.item--;
 
-  localStorage.setItem("data", JSON.stringify(basket));
-
   update(id);
+
+  basket = basket.filter((basketItem) => basketItem.item !== 0);
+  localStorage.setItem("data", JSON.stringify(basket));
 };
 
 const increment = (id) => {

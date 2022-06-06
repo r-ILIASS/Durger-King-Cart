@@ -33,6 +33,12 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  transition-duration: 200ms;
+}
+
+.cart:hover {
+  cursor: pointer;
+  color: #ffb703;
 }
 
 .cart > i {
