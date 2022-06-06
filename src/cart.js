@@ -25,9 +25,9 @@ const generateCartItems = () => {
         let search = shopItems.find(
           (shopItem) => shopItem.id === basketItem.id
         );
-        let total = 121;
+        let total = (search.price * basketItem.item).toFixed(2);
 
-        return `<div class="cartItem green-shadow">
+        return `<div id="${search.id}" class="cartItem green-shadow">
                   <img src="${search.img}" alt="chicken-bucket" />
                     <div class="cartItem__content">
                     <h1>${search.name} ${search.price} $</h1>
@@ -50,6 +50,17 @@ const generateCartItems = () => {
 generateCartItems();
 
 const deleteItem = (id) => {
-  // todo
-  console.log("id: ", id, "Deleted");
+  // remove the item from the local storage
+  basket = basket.filter((x) => x.id !== id);
+  localStorage.setItem("data", JSON.stringify(basket));
+
+  // remove the item from the UI
+  let itemToDelete = document.getElementById(id);
+  itemToDelete.remove();
+
+  // update the cart counter
+  itemsSum();
+
+  // reload the page if there are no remaining items
+  if (basket.length === 0) location.reload();
 };
