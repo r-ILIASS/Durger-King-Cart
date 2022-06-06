@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -23,12 +27,13 @@ body {
   justify-content: space-between;
 }
 
-.navbar__content > span {
+.navbar__content > a > span {
   font-weight: 800;
   color: #ffb703;
 }
 
 .cart {
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
