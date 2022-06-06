@@ -9,7 +9,6 @@ const itemsSum = () => {
   basket.forEach(({ item }) => (count += item));
   cartCounter.innerHTML = count;
 };
-
 itemsSum();
 
 const generateCartItems = () => {
@@ -22,11 +21,15 @@ const generateCartItems = () => {
   } else {
     cartItems.innerHTML = basket
       .map((basketItem) => {
+        // pull item from dummy data
         let search = shopItems.find(
           (shopItem) => shopItem.id === basketItem.id
         );
+
+        // calculate the total
         let total = (search.price * basketItem.item).toFixed(2);
 
+        // HTML Template for a single cart
         let cartItem = `
         <div id="${search.id}" class="cartItem green-shadow">
           <img src="${search.img}" alt="chicken-bucket" />
@@ -34,9 +37,9 @@ const generateCartItems = () => {
           <h1>${search.name} ${search.price} $</h1>
           <div class="cartItem__content--total">Total: <span>${total} $</span></div>
           <div class="cartItem__content--controls">
-            <i class="fa-solid fa-minus"></i>
+            <i onclick="decrement(${search.id})" class="fa-solid fa-minus"></i>
             <span class="quantity">${basketItem.item}</span>
-            <i class="fa-solid fa-plus"></i>
+            <i onclick="increment(${search.id})" class="fa-solid fa-plus"></i>
             </div>
           </div>
           <button class="delete" onclick="deleteItem(${search.id})">
@@ -45,6 +48,7 @@ const generateCartItems = () => {
         </div>
         `;
 
+        // return the populated HTML template
         return cartItem;
       })
       .join("");
@@ -67,4 +71,42 @@ const deleteItem = (id) => {
 
   // reload the page if there are no remaining items
   if (basket.length === 0) location.reload();
+};
+
+const decrement = (id) => {
+  let search = basket.find((basketItem) => basketItem.id === id);
+
+  if (search === undefined) return;
+  search.item--;
+  update(id);
+
+  if (search.item === 0) {
+    deleteItem(id);
+  }
+
+  basket = basket.filter((basketItem) => basketItem.item !== 0);
+  localStorage.setItem("data", JSON.stringify(basket));
+};
+
+const increment = (id) => {
+  let search = basket.find((basketItem) => basketItem.id === id);
+
+  if (search === undefined) {
+    basket.push({ id, item: 1 });
+  } else {
+    search.item++;
+  }
+
+  localStorage.setItem("data", JSON.stringify(basket));
+
+  update(id);
+};
+
+const update = (id) => {
+  let search = basket.find((basketItem) => basketItem.id === id);
+
+  document.getElementById(id).querySelector(".quantity").innerHTML =
+    search.item;
+
+  itemsSum();
 };
