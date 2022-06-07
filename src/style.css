@@ -213,3 +213,37 @@ body {
   font-size: 0.6em;
   cursor: pointer;
 }
+
+#totalPrice {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  margin-top: 1rem;
+}
+
+#totalPrice > span {
+  font-weight: normal;
+}
+
+.checkout {
+  background-color: #2a9d8f;
+  padding: 0.1em 0.8em;
+  border: none;
+  border-radius: 0.4em;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-right: 0.4rem;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: red;
+  padding: 0.1em 0.8em;
+  border: none;
+  border-radius: 0.4em;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+}

@@ -51,6 +51,14 @@ const generateCartItems = () => {
         return cartItem;
       })
       .join("");
+
+    bill.innerHTML = `
+      <h1 id="totalPrice">Total Price: <span>132 $</span></h1>
+      <div>
+        <button class="checkout">Checkout</button>
+        <button class="cancel">Cancel</button>
+      </div>
+  `;
   }
 };
 
