@@ -169,9 +169,9 @@ body {
   color: red;
 }
 
-.cartItem:hover {
+/* .cartItem:hover {
   transform: scale(1.05);
-}
+} */
 
 .cartItem > img {
   width: 100%;

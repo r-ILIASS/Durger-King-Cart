@@ -13,23 +13,22 @@ itemsSum();
 
 const generateCartItems = () => {
   if (basket.length === 0) {
+    // Generate friendly message and go home button
     bill.innerHTML = `
       <h1>Your cart is empty!</h1>
       <a class="goHome" href="index.html">Check out our menu!</a>
     `;
     cartItems.innerHTML = ``;
   } else {
+    // Generate the cart
     cartItems.innerHTML = basket
       .map((basketItem) => {
-        // pull item from dummy data
         let search = shopItems.find(
           (shopItem) => shopItem.id === basketItem.id
-        );
+        ); // pull item from dummy data
 
-        // calculate the total
-        let total = (search.price * basketItem.item).toFixed(2);
+        let total = (search.price * basketItem.item).toFixed(2); // calculate the total
 
-        // HTML Template for a single cart
         let cartItem = `
         <div id="${search.id}" class="cartItem green-shadow">
           <img src="${search.img}" alt="chicken-bucket" />
@@ -61,14 +60,11 @@ const deleteItem = (id) => {
   // remove the item from the local storage
   basket = basket.filter((x) => x.id !== id);
   localStorage.setItem("data", JSON.stringify(basket));
-
   // remove the item from the UI
   let itemToDelete = document.getElementById(id);
   itemToDelete.remove();
-
   // update the cart counter
   itemsSum();
-
   // reload the page if there are no remaining items
   if (basket.length === 0) location.reload();
 };
@@ -79,6 +75,8 @@ const decrement = (id) => {
   if (search === undefined) return;
   search.item--;
   update(id);
+
+  generateCartItems();
 
   if (search.item === 0) {
     deleteItem(id);
@@ -100,6 +98,7 @@ const increment = (id) => {
   localStorage.setItem("data", JSON.stringify(basket));
 
   update(id);
+  generateCartItems();
 };
 
 const update = (id) => {
