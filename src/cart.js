@@ -120,7 +120,7 @@ const totalPrice = () => {
     return search.price * basketItem.item;
   });
 
-  totalPrice = totalPrice.reduce((a, b) => a + b, 0);
+  totalPrice = totalPrice.reduce((a, b) => a + b, 0).toFixed(2);
 
   bill.innerHTML = `
   <h1 id="totalPrice">Total Price: <span>${totalPrice} $</span></h1>
