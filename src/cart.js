@@ -51,14 +51,6 @@ const generateCartItems = () => {
         return cartItem;
       })
       .join("");
-
-    bill.innerHTML = `
-      <h1 id="totalPrice">Total Price: <span>132 $</span></h1>
-      <div>
-        <button class="checkout">Checkout</button>
-        <button class="cancel">Cancel</button>
-      </div>
-  `;
   }
 };
 
@@ -73,6 +65,7 @@ const deleteItem = (id) => {
   itemToDelete.remove();
   // update the cart counter
   itemsSum();
+  totalPrice();
   // reload the page if there are no remaining items
   if (basket.length === 0) location.reload();
 };
@@ -116,4 +109,26 @@ const update = (id) => {
     search.item;
 
   itemsSum();
+  totalPrice();
 };
+
+const totalPrice = () => {
+  if (basket.length === 0) return;
+
+  let totalPrice = basket.map((basketItem) => {
+    let search = shopItems.find((shopItem) => shopItem.id === basketItem.id);
+    return search.price * basketItem.item;
+  });
+
+  totalPrice = totalPrice.reduce((a, b) => a + b, 0);
+
+  bill.innerHTML = `
+  <h1 id="totalPrice">Total Price: <span>${totalPrice} $</span></h1>
+  <div>
+    <button class="checkout">Checkout</button>
+    <button class="cancel">Cancel Order</button>
+  </div>
+`;
+};
+
+totalPrice();
