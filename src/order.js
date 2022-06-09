@@ -60,3 +60,8 @@ const generateHeatBill = () => {
 };
 
 generateHeatBill();
+
+const orderAgain = () => {
+  localStorage.setItem("data", JSON.stringify([]));
+  return window.location.replace("index.html");
+};
