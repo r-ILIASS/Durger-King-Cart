@@ -225,8 +225,20 @@ body {
   font-weight: normal;
 }
 
-.checkout {
+.order {
   background-color: #2a9d8f;
+  padding: 0.1em 0.8em;
+  border: none;
+  border-radius: 0.4em;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-right: 0.4rem;
+  cursor: pointer;
+}
+
+.addMore {
+  background-color: #ffb703;
   padding: 0.1em 0.8em;
   border: none;
   border-radius: 0.4em;
