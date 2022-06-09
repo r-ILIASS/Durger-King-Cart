@@ -17,7 +17,9 @@ const generateHeatBill = () => {
     .map((basketItem) => {
       let search = shopItems.find((item) => item.id === basketItem.id);
       let itemTotalPrice = basketItem.item * search.price;
-      return `<tr><td>${search.name}</td><td>x${basketItem.item}</td><td>${itemTotalPrice}$</td></tr>`;
+      return `<tr><td>${search.name}</td><td>x${
+        basketItem.item
+      }</td><td>${itemTotalPrice.toFixed(2)}$</td></tr>`;
     })
     .join("");
 
@@ -27,7 +29,8 @@ const generateHeatBill = () => {
       let search = shopItems.find((item) => item.id === basketItem.id);
       return search.price * basketItem.item;
     })
-    .reduce((a, b) => a + b, 0);
+    .reduce((a, b) => a + b, 0)
+    .toFixed(2);
 
   // get the current date
   let date = new Date().toISOString().slice(0, 10);
