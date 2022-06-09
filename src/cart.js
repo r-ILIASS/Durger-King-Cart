@@ -131,7 +131,7 @@ const totalPrice = () => {
   bill.innerHTML = `
   <h1 id="totalPrice">Total Price: <span>${totalPrice} $</span></h1>
   <div>
-    <button class="order">Order</button>
+    <a href="order.html" class="order">Order</a>
     <a href="index.html" class="addMore">Add More Items</a>
     <button onclick="cancelOrder()" class="cancel">Cancel</button>
   </div>

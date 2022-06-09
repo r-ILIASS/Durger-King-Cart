@@ -259,3 +259,79 @@ body {
   font-weight: 500;
   cursor: pointer;
 }
+
+.checkoutBillContainer {
+  margin: 0 auto;
+  padding-top: 10%;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+}
+
+.heatBill {
+  width: 300px;
+  padding: 0.5em 0;
+  font-family: monospace;
+  color: rgb(44, 44, 44);
+  -webkit-box-shadow: 2px 4px 9px -4px #000000;
+  box-shadow: 2px 4px 9px -4px #000000;
+}
+
+.heatBill > h1 {
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.heatBill > p {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.heatBillFooter {
+  margin-top: 1.3em;
+}
+
+.date {
+  width: 100%;
+  text-align: right;
+  padding-right: 0.9em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: center;
+  border-top: dotted 1px black;
+  border-bottom: dotted 1px black;
+  padding: 0.5em 0;
+}
+
+th:first-child {
+  text-align: left;
+  padding-left: 0.3em;
+}
+
+th:last-child {
+  text-align: right;
+  padding-right: 0.9em;
+}
+
+td {
+  padding: 0.3em 0;
+  text-align: center;
+}
+
+tr > td:first-child {
+  text-align: left;
+  padding-left: 0.3em;
+}
+
+tr > td:last-child {
+  text-align: right;
+  padding-right: 0.9em;
+}
