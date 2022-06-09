@@ -112,6 +112,12 @@ const update = (id) => {
   totalPrice();
 };
 
+const cancelOrder = () => {
+  basket = [];
+  localStorage.setItem("data", JSON.stringify(basket));
+  window.location.replace("index.html");
+};
+
 const totalPrice = () => {
   if (basket.length === 0) return;
 
@@ -126,7 +132,7 @@ const totalPrice = () => {
   <h1 id="totalPrice">Total Price: <span>${totalPrice} $</span></h1>
   <div>
     <button class="checkout">Checkout</button>
-    <button class="cancel">Cancel Order</button>
+    <button onclick="cancelOrder()" class="cancel">Cancel Order</button>
   </div>
 `;
 };
